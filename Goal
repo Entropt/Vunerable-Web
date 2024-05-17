@@ -1,0 +1,10 @@
+SQLi (Labs: done)
+Insecure Deserialization
+File upload (Labs: done)
+XSS
+IDOR (Labs: done)
+Authentication
+
+Bonus:
+Server-side template injection
+Race condition (with File Upload)
