@@ -8,3 +8,10 @@ Authentication
 Bonus:
 Server-side template injection
 Race condition (with File Upload)
+
+Website Analysis:
+A website with normal login
+With picture profile upload
+A commerce website
+IDOR with the pointer to unreleased products
+XSS with comments and searchs
