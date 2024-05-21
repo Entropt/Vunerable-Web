@@ -1,11 +1,6 @@
 html {
   word-spacing: 1px;
-  -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
   color: #4d5068;
   background-color: #f2f5f7;
@@ -71,6 +66,8 @@ html {
   border-bottom-left-radius: 10px;
   width: 100%;
   padding: 1em;
+  align-content: center;
+  align-items: center;
 }
 .text-title {
   font-size: 1.5rem;
@@ -126,8 +123,4 @@ html {
   text-decoration: none;
   display: -ms-flexbox;
   display: flex;
-}
-.link-about > a {
-  color: #4d5068;
-  text-decoration: underline;
 }

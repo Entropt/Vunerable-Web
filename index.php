@@ -31,10 +31,13 @@
           <input class='btn-submit' type='submit' value='Log In' />
         </div>
         <div id='response-text' />
+        <script>
+          // input the code here
+        </script>
       </form>
-      <div class='bg-grey'>
-        <a href='/register.php' class='link-register'>Sign Up</a>
-      </div>
+    </div>
+    <div class='bg-grey'>
+      <a href='/register.php' class='link-register'>Sign Up</a>
     </div>
   </div>
 </body>
@@ -42,26 +45,34 @@
 </html>
 
 <?php
-// Assuming you have a database connection established
+
 include('database.php');
 
 session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  if (isset($_POST['username']) && isset($_POST['password'])) {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+  if (!empty($_POST['username']) && !empty($_POST['password'])) {
+    // $username = $_POST['username'];
+    // $password = $_POST['password'];
 
-    $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-    $result = mysqli_query($connect, $query);
+    // $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+    // $result = mysqli_query($connect, $query);
+
+    $username = mysqli_real_escape_string($connect, $_POST['username']);
+    $password = mysqli_real_escape_string($connect, $_POST['password']);
+
+    $query = "SELECT * FROM users WHERE username = ? AND password = ?";
+    $stmt = mysqli_prepare($connect, $query);
+    mysqli_stmt_bind_param($stmt, "ss", $username, $password);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($result) > 0) {
-      header("Location: main.php");
+      header("Location: home.php");
     } else {
       echo "<script>document.getElementById('response-text').innerHTML = 'Username or password incorrect!';</script>";
     }
-  }
-  else {
+  } else {
     echo "<script>document.getElementById('response-text').innerHTML = 'Please fill in all fields!';</script>";
   }
 }
