@@ -1,79 +1,152 @@
 <!DOCTYPE html>
-<html lang='en'>
-
-<head>
-  <meta charset='utf-8' />
-  <meta name='robots' content='follow,index' />
-  <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-  <title>Vunerable Web</title>
-  <link rel='shortcut icon' href='#' />
-  <link rel='stylesheet' href='css/login-panel.css' />
-  <link rel='stylesheet' href='css/login.css' />
-  <link rel='stylesheet' href='https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap' />
-</head>
-
-<body>
-  <div class='content-body'>
-    <div class='form-wrapper'>
-      <form class='bg-white' action='index.php' method='post'>
-        <h1 class='text-title'>Login to your account</h1>
-
-        <div class='field-group'>
-          <label class='label' for='username'>Username</label>
-          <input class='input' type='text' id='username' name='username' placeholder='Enter username' />
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="css/blog.css">
+        <title>Blog</title>
+    </head>
+    <body>
+        <!-- navbar start -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/index.php">Home</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2 rounded-0" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success rounded-0 my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        <!-- navbar ends -->
+        <!-- main content start  -->
+        <div class="container mt-5">
+            <div class="row main-section">
+                <div class="col-sm-12 col-md-9 col-lg-9">
+                    <div class="card rounded-0 shadow-sm" >
+                        <div class="card-header">
+                            <span>By</span>
+                            <span class="text-success"> AJay Marathe</span>
+                            <span>on</span>
+                            <span class="text-success"> 28 Dec 2018</span>
+                        </div>
+                        <div class="card-body">
+                             <img class="card-img-top" src="img/kajal2.png" alt="img">
+                            <hr>
+                            <h2 class="card-title">Kajal Aggarwal Wons The Best Actress Award At Zee Golden Awards 2017 For Nene Raju Nene Mantri Movie.</h2>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est dicta nisi ab consequatur fugit obcaecati harum expedita, doloremque dolorem quam aut quas ad amet assumenda. Provident sunt ipsum minima autem.</p>
+                            <a href="blog-post.html" class="btn btn-primary">Read more</a>
+                        </div>
+                    </div>
+                    <!-- second post  -->
+                    <div class="card rounded-0 shadow-sm" >
+                        <div class="card-header">
+                            <span>By</span>
+                            <span class="text-success"> AJay Marathe</span>
+                            <span>on</span>
+                            <span class="text-success"> 28 Dec 2018</span>
+                        </div>
+                        <div class="card-body">
+                            <img class="card-img-top" src="https://via.placeholder.com/750x300" alt="img">
+                            <hr>
+                            <h2 class="card-title">Kajal Aggarwal Wons The Best Actress Award At Zee Golden Awards 2017 For Nene Raju Nene Mantri Movie.</h2>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est consequatur aliquam, non eius aut natus at consequuntur quasi sed corporis possimus adipisci dignissimos atque praesentium sint autem pariatur asperiores laudantium.</p>
+                            <a href="blog-post.html" class="btn btn-primary">Read more</a>
+                        </div>
+                    </div>
+                   <!-- third post  -->
+                    <div class="card rounded-0 shadow-sm" >
+                        <div class="card-header">
+                            <span>By</span>
+                            <span class="text-success"> AJay Marathe</span>
+                            <span>on</span>
+                            <span class="text-success"> 28 Dec 2018</span>
+                        </div>
+                        <div class="card-body">
+                            <img class="card-img-top" src="https://via.placeholder.com/750x300" alt="img">
+                            <hr>
+                            <h2 class="card-title">Kajal Aggarwal Wons The Best Actress Award At Zee Golden Awards 2017 For Nene Raju Nene Mantri Movie.</h2>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est consequatur aliquam, non eius aut natus at consequuntur quasi sed corporis possimus adipisci dignissimos atque praesentium sint autem pariatur asperiores laudantium.</p>
+                            <a href="blog-post.html" class="btn btn-primary">Read more</a>
+                        </div>
+                    </div>
+                    <!-- forth post -->
+                    <div class="card rounded-0 shadow-sm" >
+                        <div class="card-header">
+                            <span>By</span>
+                            <span class="text-success"> AJay Marathe</span>
+                            <span>on</span>
+                            <span class="text-success"> 28 Dec 2018</span>
+                        </div>
+                        <div class="card-body">
+                            <img class="card-img-top" src="img/kajal2.png" alt="img">
+                            <hr>
+                            <h2 class="card-title">Kajal Aggarwal Wons The Best Actress Award At Zee Golden Awards 2017 For Nene Raju Nene Mantri Movie.</h2>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est consequatur aliquam, non eius aut natus at consequuntur quasi sed corporis possimus adipisci dignissimos atque praesentium sint autem pariatur asperiores laudantium.</p>
+                            <a href="blog-post.html" class="btn btn-primary">Read more</a>
+                        </div>
+                    </div>
+                     <!-- fifth post  -->
+                    <div class="card rounded-0 shadow-sm" >
+                        <div class="card-header">
+                            <span>By</span>
+                            <span class="text-success"> AJay Marathe</span>
+                            <span>on</span>
+                            <span class="text-success"> 28 Dec 2018</span>
+                        </div>
+                        <div class="card-body">
+                            <img class="card-img-top" src="https://via.placeholder.com/750x300" alt="img">
+                            <hr>
+                            <h2 class="card-title">Kajal Aggarwal Wons The Best Actress Award At Zee Golden Awards 2017 For Nene Raju Nene Mantri Movie.</h2>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est consequatur aliquam, non eius aut natus at consequuntur quasi sed corporis possimus adipisci dignissimos atque praesentium sint autem pariatur asperiores laudantium.</p>
+                            <a href="blog-post.html" class="btn btn-primary">Read more</a>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <nav aria-label="...">
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <span class="page-link">Previous</span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active">
+                                    <span class="page-link">
+                                        2
+                                        <span class="sr-only">(current)</span>
+                                    </span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-3 col-lg-3">
+                    <div class="card rounded-0 shadow-sm">
+                        <div class="card-header">
+                            Category
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><a href="#">Social</a></li>
+                            <li class="list-group-item"><a href="#">Sports</a></li>
+                            <li class="list-group-item"><a href="#">Technology</a></li>
+                            <li class="list-group-item"><a href="#">Trend</a></li>
+                            <li class="list-group-item"><a href="#">Economics</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class='field-group'>
-          <label class='label' for='password'>Password</label>
-          <input class='input' type='password' id='password' name='password' placeholder='Enter password' />
-          <a href='#forgot' class='link-forgot'>Forgot?</a>
-        </div>
-        <div class='field-group'>
-          <input class='btn-submit' type='submit' value='Log In' />
-        </div>
-        <div id='response-text' />
-        <script>
-          // input the code here
-        </script>
-      </form>
-    </div>
-    <div class='bg-grey'>
-      <a href='/register.php' class='link-register'>Sign Up</a>
-    </div>
-  </div>
-</body>
-
+        <!-- main content ends -->
+        <!-- Optional JavaScript -->
+        
+    </body>
 </html>
-
-<?php
-
-include('database.php');
-
-session_start();
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  if (!empty($_POST['username']) && !empty($_POST['password'])) {
-    // $username = $_POST['username'];
-    // $password = $_POST['password'];
-
-    // $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-    // $result = mysqli_query($connect, $query);
-
-    $username = mysqli_real_escape_string($connect, $_POST['username']);
-    $password = mysqli_real_escape_string($connect, $_POST['password']);
-
-    $query = "SELECT * FROM users WHERE username = ? AND password = ?";
-    $stmt = mysqli_prepare($connect, $query);
-    mysqli_stmt_bind_param($stmt, "ss", $username, $password);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-
-    if (mysqli_num_rows($result) > 0) {
-      header("Location: home.php");
-    } else {
-      echo "<script>document.getElementById('response-text').innerHTML = 'Username or password incorrect!';</script>";
-    }
-  } else {
-    echo "<script>document.getElementById('response-text').innerHTML = 'Please fill in all fields!';</script>";
-  }
-}
-?>

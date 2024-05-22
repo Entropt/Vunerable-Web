@@ -32,7 +32,10 @@
         <div class='field-group'>
           <input class='btn-submit' type='submit' value='Register' />
         </div>
-        <div id='response-text' /> 
+        <div id='response-text'></div>
+        <div>
+          <a href='/login.php' class='link-login' style="text-decoration: none">Back to Login</a>
+        </div>
       </form>
     </div>
   </div>
@@ -44,18 +47,26 @@
 include('database.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password'])) {
-    $email = $_POST['email'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+  if (!empty($_POST['email']) && !empty($_POST['username']) && !empty($_POST['password'])) {
+    $email = mysqli_real_escape_string($connect, $_POST['email']);
+    $username = mysqli_real_escape_string($connect, $_POST['username']);
+    $password = mysqli_real_escape_string($connect, $_POST['password']);
 
-    $query = "INSERT INTO users (email, username, password) VALUES ('$email', '$username', '$password')";
-    $result = mysqli_query($connect, $query);
-
-    if ($result) {
-      echo "<script>document.getElementById('response-text').innerHTML = 'Account created successfully!';</script>";
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      echo "<script>document.getElementById('response-text').innerHTML = 'Invalid email format' </script>";
     } else {
-      echo "<script>document.getElementById('response-text').innerHTML = 'Failed to create account!';</script>";
+      $query = "INSERT INTO users (email, username, password) VALUES (?, ?, ?)";
+      $stmt = mysqli_prepare($connect, $query);
+      mysqli_stmt_bind_param($stmt, "sss", $email, $username, $password);
+      mysqli_stmt_execute($stmt);
+
+      if (mysqli_stmt_affected_rows($stmt) > 0) {
+        echo "<script>document.getElementById('response-text').innerHTML = 'Account created successfully!';</script>";
+      } else {
+        echo "<script>document.getElementById('response-text').innerHTML = 'Failed to create account!';</script>";
+      }
+
+      mysqli_stmt_close($stmt);
     }
   } else {
     echo "<script>document.getElementById('response-text').innerHTML = 'Please fill in all fields!';</script>";

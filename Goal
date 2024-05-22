@@ -12,6 +12,6 @@ Race condition (with File Upload)
 Website Analysis:
 A website with normal login
 With picture profile upload
-A commerce website
-IDOR with the pointer to unreleased products
+A blog website
+IDOR with the pointer to secret blog
 XSS with comments and searchs
