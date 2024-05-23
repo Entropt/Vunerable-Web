@@ -1,7 +1,7 @@
 # Vunerable Website by Entropt
 
 ## Requirement
-SQLi (Labs: done) <br>
+SQLi (Labs: done; Web: done) <br>
 Insecure Deserialization <br>
 File upload (Labs: done) <br>
 XSS <br>

@@ -66,7 +66,7 @@ $row = mysqli_fetch_assoc($result);
                     </div>
                     <div class="card-body">
                         <?php
-                        $file_dir = "img/post" . $postId . ".png";
+                        $file_dir = "img/posts/" . $postId . ".png";
                         if (file_exists($file_dir))
                             echo "<img class='card-img-top' src=$file_dir>";
                         ?>
@@ -80,9 +80,12 @@ $row = mysqli_fetch_assoc($result);
                             <div class="col col-sm-10 col-md-10">
                                 <div class="form-group">
                                     <input type="text" name="comment" class="form-control rounded-0" placeholder="Enter comment...">
+                                    <form action="upload.php" method="post" enctype="multipart/form-data">
+                                        <input type="file" name="fileToUpload" id="fileToUpload">
+                                    </form>
                                 </div>
                             </div>
-                            <div class="col col-sm-2 col-md-2">
+                            <div class="col col-sm-2 col-md-2" action="posts.php">
                                 <button class="btn btn-warning rounded-0">Submit</button>
                             </div>
                         </div>
@@ -120,3 +123,4 @@ $row = mysqli_fetch_assoc($result);
 </body>
 
 </html>
+

@@ -1,8 +1,5 @@
 <?php
 require_once 'database.php';
-if (empty($_GET['postid']) || !is_numeric($postId = $_GET['postid'])) {
-    Header("Location: index.php");
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +42,7 @@ if (empty($_GET['postid']) || !is_numeric($postId = $_GET['postid'])) {
                         <span class="text-success"> 28 Dec 2018</span>
                     </div>
                     <div class="card-body">
-                        <img class="card-img-top" src="img/post1.png" alt="img">
+                        <img class="card-img-top" src="img/posts/1.png" alt="img">
                         <hr>
                         <h2 class="card-title">Kajal Aggarwal Wons The Best Actress Award At Zee Golden Awards 2017 For Nene Raju Nene Mantri Movie.</h2>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est dicta nisi ab consequatur fugit obcaecati harum expedita, doloremque dolorem quam aut quas ad amet assumenda. Provident sunt ipsum minima autem.</p>
