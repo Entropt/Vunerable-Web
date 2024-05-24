@@ -1,26 +1,26 @@
 # Vunerable Website by Entropt
 
 ## Requirement
-SQLi (Labs: done; Web: done) <br>
-Insecure Deserialization <br>
-File upload (Labs: done) <br>
-XSS <br>
-IDOR (Labs: done) <br>
-Authentication <br>
+
+| Vunerabilities | Labs | Web |
+| --- | :---:| :---: |
+| SQL Injection | <span style="color:green">completed</span> | <span style="color:green">completed</span> | 
+| Insecure Deserialization | on-going |  |
+| File upload | <span style="color:green">completed</span> | <span style="color:green">completed</span> |  |
+| Cross-site scripting | on-going | on-going |
+| Server-side template injection |  |  |
+| Authentication | on-going |  |
 
 ## Bonus:
-Server-side template injection
 Race condition (with File Upload)
 
 ## Website Analysis:
-A website with normal login <br>
-With picture profile upload <br>
-A blog website <br>
-IDOR with the pointer to secret blog <br>
-XSS with comments and searchs <br>
+A website with normal login: <span style="color:green">completed</span> <br>
+With picture profile upload in comment: <span style="color:green">completed</span> <br>
+A newspaper website: on-going <br>
+XSS with comments and searchs: on-going<br>
 
 
 ## Instruction
-Change the ownership of the upload directory:
-
-sudo chown -R www-data:www-data img/comments
+Change the ownership of the upload directory to user **www-data**: <br>
+`sudo chown -R www-data:www-data img/comments`
