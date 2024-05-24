@@ -1,7 +1,7 @@
 # Vunerable Website by Entropt
 
-## Requirement
 
+## Requirement
 | Vunerabilities | Labs | Web |
 | --- | :---:| :---: |
 | SQL Injection | completed | completed | 
@@ -11,14 +11,26 @@
 | Server-side template injection |  |  |
 | Authentication | on-going |  |
 
+
 ## Bonus:
-Race condition (with File Upload)
+IDOR <br>
+Race condition (with File Upload) <br>
+
+
+## Specification
+| Specs| Value |
+| :--- | :--- |
+| OS | Kali Linux |
+| Webserver | Nginx |
+| Language | PHP |
+| Database | MariaDB |
+
 
 ## Website Analysis:
 A website with normal login: completed <br>
 With picture upload in comments: completed <br>
 A newspaper website: on-going <br>
-XSS with comments and searchs: on-going<br>
+XSS with comments and searchs: on-going <br>
 
 
 ## Instruction
