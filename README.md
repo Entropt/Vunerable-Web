@@ -4,9 +4,9 @@
 
 | Vunerabilities | Labs | Web |
 | --- | :---:| :---: |
-| SQL Injection | <span style="color:green">completed</span> | <span style="color:green">completed</span> | 
+| SQL Injection | completed | completed | 
 | Insecure Deserialization | on-going |  |
-| File upload | <span style="color:green">completed</span> | <span style="color:green">completed</span> |  |
+| File upload | completed | completed |  |
 | Cross-site scripting | on-going | on-going |
 | Server-side template injection |  |  |
 | Authentication | on-going |  |
@@ -15,8 +15,8 @@
 Race condition (with File Upload)
 
 ## Website Analysis:
-A website with normal login: <span style="color:green">completed</span> <br>
-With picture profile upload in comment: <span style="color:green">completed</span> <br>
+A website with normal login: completed <br>
+With picture upload in comments: completed <br>
 A newspaper website: on-going <br>
 XSS with comments and searchs: on-going<br>
 
