@@ -76,27 +76,39 @@ $row = mysqli_fetch_assoc($result);
                         ?>
                     </div>
                     <div class="card-footer">
-                        <div class="row">
+                        <form class="row" action="<?php echo "upload.php?postid=$postId"; ?>" method="post" enctype="multipart/form-data">
                             <div class="col col-sm-10 col-md-10">
                                 <div class="form-group">
                                     <input type="text" name="comment" class="form-control rounded-0" placeholder="Enter comment...">
-                                    <form action="upload.php" method="post" enctype="multipart/form-data">
-                                        <input type="file" name="fileToUpload" id="fileToUpload">
-                                    </form>
+                                    <input type="file" name="fileToUpload" id="fileToUpload">
                                 </div>
                             </div>
-                            <div class="col col-sm-2 col-md-2" action="posts.php">
-                                <button class="btn btn-warning rounded-0">Submit</button>
+                            <div class="col col-sm-2 col-md-2">
+                                <input class="btn btn-warning rounded-0" type="submit" value="Submit" name="submit">
                             </div>
-                        </div>
+                        </form>
+                        <?php
+                        
+                        ?>
                         <div class="comment-section">
                             <?php
                             $query = "SELECT * FROM comments WHERE post_id = $postId";
                             $result = mysqli_query($connect, $query);
-
+                            
                             while ($row = mysqli_fetch_assoc($result)) {
                                 echo "<span class='text-success bg-faded'><a style='color:black'>{$row['username']}: </a>{$row['comment_text']}</span>";
+
+                                $allowed_file_extensions = array("jpg", "png", "jpeg", "gif");
+                                foreach ($allowed_file_extensions as $extension) {
+                                    if (file_exists("img/comments/" . $row['id'] . "." . $extension)) {
+                                        echo "<img src='img/comments/{$row['id']}.$extension' alt='img' style='width: auto; height: 100px;'> <br> <br>";
+                                        break; // Exit the loop once a valid file is found
+                                    }
+                                }
+                                
                             }
+                            mysqli_free_result($result);
+                            mysqli_close($connect);
                             ?>
                         </div>
                     </div>
@@ -123,4 +135,3 @@ $row = mysqli_fetch_assoc($result);
 </body>
 
 </html>
-

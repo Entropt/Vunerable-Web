@@ -18,3 +18,9 @@ With picture profile upload <br>
 A blog website <br>
 IDOR with the pointer to secret blog <br>
 XSS with comments and searchs <br>
+
+
+## Instruction
+Change the ownership of the upload directory:
+
+sudo chown -R www-data:www-data img/comments
