@@ -13,7 +13,14 @@ function insert_comment($connect, $postId, $comment, $username)
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!empty($_POST['comment'])) {
+    if (!empty($_POST['comment']) || !empty($_FILES["fileToUpload"]["name"])) {
+        $comment = '';
+        if (!empty($_POST['comment'])) {
+            // Handle text input without file upload
+            $comment = $_POST['comment'];
+            insert_comment($connect, $postId, $comment, 'admin');
+        }
+
         if (!empty($_FILES["fileToUpload"]["name"])) {
             // Upload image
             $query = "SELECT AUTO_INCREMENT FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'vunerable_web' AND TABLE_NAME = 'comments'";
@@ -59,15 +66,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "Sorry, your file was not uploaded.";
             } else {
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                    insert_comment($connect, $postId, $_POST['comment'], 'admin');
+                    if (empty($comment)) {
+                        $comment = 'No comment';
+                    }
+                    insert_comment($connect, $postId, $comment, 'admin');
                     echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
             }
-        } else {
-            echo "The comment has been uploaded.";
-            insert_comment($connect, $postId, $_POST['comment'], 'admin');
         }
     }
 }
