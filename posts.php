@@ -88,15 +88,23 @@ $row = mysqli_fetch_assoc($result);
                             </div>
                         </form>
                         <?php
-                        
+
                         ?>
                         <div class="comment-section">
                             <?php
                             $query = "SELECT * FROM comments WHERE post_id = $postId";
                             $result = mysqli_query($connect, $query);
-                            
+
                             while ($row = mysqli_fetch_assoc($result)) {
-                                echo "<span class='text-success bg-faded'><a style='color:black'>{$row['username']}: </a>{$row['comment_text']}</span>";
+                                //// Encode both double and single quotes
+                                // htmlspecialchars($string, ENT_QUOTES);
+
+                                //// Encode non-ASCII characters as well
+                                // htmlspecialchars($string, ENT_QUOTES | ENT_SUBSTITUTE);
+
+                                // CSP is recommended but not used in this situation due to above stylesheet is an outsourced file
+                                // Therefore, the user input should be sanitized carefully before being displayed
+                                echo "<span class='text-success bg-faded'><a style='color:black'>" . htmlspecialchars($row['username']) . ": </a>" . htmlspecialchars($row['comment_text']) . "</span>";
 
                                 $allowed_file_extensions = array("jpg", "png", "jpeg", "gif");
                                 foreach ($allowed_file_extensions as $extension) {
@@ -105,7 +113,6 @@ $row = mysqli_fetch_assoc($result);
                                         break; // Exit the loop once a valid file is found
                                     }
                                 }
-                                
                             }
                             mysqli_free_result($result);
                             mysqli_close($connect);
@@ -130,7 +137,6 @@ $row = mysqli_fetch_assoc($result);
             </div>
         </div>
     </div>
-    <!-- Optional JavaScript -->
 
 </body>
 

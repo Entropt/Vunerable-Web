@@ -1,7 +1,9 @@
 <?php
 require_once 'database.php';
 
-$postId = $_GET['postid'];
+if (empty($_GET['postid']) || !is_numeric($postId = $_GET['postid'])) {
+    Header("Location: index.php");
+}
 
 function insert_comment($connect, $postId, $comment, $username)
 {
@@ -29,28 +31,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Check if image file is a actual image or fake image
             $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
             if ($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
+                echo "File is an image - " . $check["mime"] . ". ";
                 $uploadOk = 1;
             } else {
-                echo "File is not an image.";
+                echo "File is not an image. ";
                 $uploadOk = 0;
             }
 
             // Check if file already exists
             if (file_exists($target_file)) {
-                echo "Sorry, file already exists.";
+                echo "Sorry, file already exists. ";
                 $uploadOk = 0;
             }
 
             // Check file size
-            if ($_FILES["fileToUpload"]["size"] > 2000000) {
-                echo "Sorry, your file is too large.";
+            if ($_FILES["fileToUpload"]["size"] > 200000) {
+                echo "Sorry, your file is too large. ";
                 $uploadOk = 0;
             }
 
             // Allow certain file formats
             if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
-                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed. ";
                 $uploadOk = 0;
             }
 
@@ -59,20 +61,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "Sorry, your file was not uploaded.";
             } else {
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                    insert_comment($connect, $postId, $_POST['comment'], 'admin');
                     echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
+
+                echo "<br>";
             }
-        } else {
-            echo "The comment has been uploaded.";
-            insert_comment($connect, $postId, $_POST['comment'], 'admin');
         }
+        echo "The comment has been uploaded.<br>";
+        insert_comment($connect, $postId, $_POST['comment'], 'admin');
     }
+
+    // If the file is not moved or renamed, it will be deleted here
 }
 
-echo "<br><a href='posts.php?postid=$postId'>Back to post</a>";
+echo "<a href='posts.php?postid=$postId'>Back to post</a>";
 ?>
 <!DOCTYPE html>
 <html lang="en">

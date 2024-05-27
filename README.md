@@ -7,7 +7,7 @@
 | SQL Injection | completed | completed | 
 | Insecure Deserialization | on-going |  |
 | File upload | completed | completed |  |
-| Cross-site scripting | on-going | on-going |
+| Cross-site scripting | completed | completed |
 | Server-side template injection |  |  |
 | Authentication | on-going |  |
 
