@@ -23,9 +23,11 @@ require_once 'database.php';
                     <a class="nav-link" href="/index.php">Home</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2 rounded-0" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success rounded-0 my-2 my-sm-0" type="submit">Search</button>
+            <form class="form-inline my-2 my-lg-0" action="logout.php">
+                <?php
+                echo "<li class='nav-link'>Hi, " . "<a style='font-style: italic'>admin  </a>" . "</li>";
+                ?>
+                <button class="btn btn-outline rounded-0 my-2 my-sm-0" style="color:red; border-color:red; background-color:white" type="submit">Logout</button>
             </form>
         </div>
     </nav>
@@ -150,8 +152,6 @@ require_once 'database.php';
             </div>
         </div>
     </div>
-    <!-- main content ends -->
-    <!-- Optional JavaScript -->
 
 </body>
 
