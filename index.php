@@ -24,9 +24,13 @@ require_once 'database.php';
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0" action="logout.php">
-                <?php
-                echo "<li class='nav-link'>Hi, " . "<a style='font-style: italic'>admin  </a>" . "</li>";
-                ?>
+                <li class='nav-link'>Hi,
+                    <a style='font-style: italic; font-size: 95%;'">
+                        <?php
+                        echo 'admin';
+                        ?>
+                    </a>
+                </li>
                 <button class="btn btn-outline rounded-0 my-2 my-sm-0" style="color:red; border-color:red; background-color:white" type="submit">Logout</button>
             </form>
         </div>
@@ -154,5 +158,6 @@ require_once 'database.php';
     </div>
 
 </body>
+
 
 </html>

@@ -30,9 +30,15 @@ $row = mysqli_fetch_assoc($result);
                     <a class="nav-link" href="/index.php">Home</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2 rounded-0" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success rounded-0 my-2 my-sm-0" type="submit">Search</button>
+            <form class="form-inline my-2 my-lg-0" action="logout.php">
+                <li class='nav-link'>Hi,
+                    <a style='font-style: italic; font-size: 95%;'">
+                        <?php
+                        echo 'admin';
+                        ?>
+                    </a>
+                </li>
+                <button class=" btn btn-outline rounded-0 my-2 my-sm-0" style="color:red; border-color:red; background-color:white" type="submit">Logout</button>
             </form>
         </div>
     </nav>
@@ -79,7 +85,8 @@ $row = mysqli_fetch_assoc($result);
                         <form class="row" action="<?php echo "upload.php?postid=$postId"; ?>" method="post" enctype="multipart/form-data">
                             <div class="col col-sm-10 col-md-10">
                                 <div class="form-group">
-                                    <input type="text" name="comment" class="form-control rounded-0" placeholder="Enter comment...">
+                                    <input type="text" name="comment" id="comment" class="form-control rounded-0" placeholder="Enter comment...">
+                                    <input type="submit" name="preview" id="preview" value="Preview">
                                     <input type="file" name="fileToUpload" id="fileToUpload">
                                 </div>
                             </div>
@@ -87,10 +94,19 @@ $row = mysqli_fetch_assoc($result);
                                 <input class="btn btn-warning rounded-0" type="submit" value="Submit" name="submit">
                             </div>
                         </form>
+                        <div>
+                            <a id="username" style="display:none">
+                                <?php
+                                echo 'admin: ';
+                                ?>
+                            </a>
+                            <a class="preview-container text-success bg-faded" />
+                        </div>
+                        <hr>
                         <?php
 
                         ?>
-                        <div class="comment-section">
+                        <div class=" comment-section">
                             <?php
                             $query = "SELECT * FROM comments WHERE post_id = $postId";
                             $result = mysqli_query($connect, $query);
@@ -115,7 +131,6 @@ $row = mysqli_fetch_assoc($result);
                                 }
                             }
                             mysqli_free_result($result);
-                            mysqli_close($connect);
                             ?>
                         </div>
                     </div>
@@ -140,4 +155,36 @@ $row = mysqli_fetch_assoc($result);
 
 </body>
 
+<script>
+    // Add event listener for the Preview button
+    document.getElementById('preview').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Get the comment value
+        let commentValue = document.getElementById('comment').value;
+
+        sendPreviewRequest(commentValue);
+    });
+
+    function sendPreviewRequest(commentValue) {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', 'preview.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                // Update the preview container with the rendered HTML
+                const previewContainer = document.querySelector('.preview-container');
+                previewContainer.innerHTML = xhr.responseText;
+
+                //document.getElementById('username').style.display = 'contents';
+            }
+        };
+        xhr.send('comment=' + encodeURIComponent(commentValue));
+    }
+</script>
+
 </html>
+
+<?php
+
+?>

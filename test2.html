@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pop-up Input Window</title>
+    <script>
+      function showInputPopup() {
+        const inputValue = prompt("Enter your input:");
+
+        if (inputValue !== null) {
+          // Do something with the input value
+          console.log("Input value:", inputValue);
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <a href="#" onclick="showInputPopup()">Click here to open input window</a>
+  </body>
+</html>
