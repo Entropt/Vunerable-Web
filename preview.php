@@ -10,13 +10,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $comment = $_POST["comment"];
     }
 
-    $t = '' . $comment;
-
-    $loader = new ArrayLoader(array('index' => $t));
+    $loader = new ArrayLoader(array('index' => $comment));
     $twig = new Environment($loader);
 
     try {
-        echo $twig->render('index', array('comment' => ''));
+        echo htmlspecialchars($twig->render('index'));
     } catch (Exception $e) {
         Header("Location: error.html");
     }

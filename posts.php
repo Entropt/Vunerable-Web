@@ -95,13 +95,13 @@ $row = mysqli_fetch_assoc($result);
                             </div>
                         </form>
                         <div>
-                            <a id="username" style="display:none">
-                                <?php
-                                echo 'admin: ';
-                                ?>
-                            </a>
-                            <a class="preview-container text-success bg-faded" />
-                        </div>
+                        <a id="preview-user" style="display:none">
+                            <?php
+                            echo 'admin: ';
+                            ?>
+                        </a>
+                        <span class="preview-container text-success bg-faded" />
+                        </div> 
                         <hr>
                         <?php
 
@@ -176,7 +176,7 @@ $row = mysqli_fetch_assoc($result);
                 const previewContainer = document.querySelector('.preview-container');
                 previewContainer.innerHTML = xhr.responseText;
 
-                //document.getElementById('username').style.display = 'contents';
+                document.getElementById('preview-user').style.display = 'contents';
             }
         };
         xhr.send('comment=' + encodeURIComponent(commentValue));
