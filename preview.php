@@ -6,6 +6,7 @@ use Twig\Loader\ArrayLoader;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST["comment"])) {
+        // Encode base64 to avoid SSTI
         $comment = base64_encode($_POST["comment"]);
     }
     $loader = new ArrayLoader(array('index' => $comment));

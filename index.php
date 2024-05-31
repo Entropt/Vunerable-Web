@@ -1,4 +1,12 @@
 <?php
+if (!isset($_COOKIE['session'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$unserialized_data = unserialize(base64_decode($_COOKIE['session']));
+$username = $unserialized_data['username'];
+
 require_once 'database.php';
 ?>
 <!DOCTYPE html>
@@ -26,12 +34,14 @@ require_once 'database.php';
             <form class="form-inline my-2 my-lg-0" action="logout.php">
                 <li class='nav-link'>Hi,
                     <a style='font-style: italic; font-size: 95%;'">
-                        <?php
-                        echo 'admin';
-                        ?>
+                    <?php
+                    echo $username;
+                    ?>
                     </a>
                 </li>
-                <button class="btn btn-outline rounded-0 my-2 my-sm-0" style="color:red; border-color:red; background-color:white" type="submit">Logout</button>
+                <button class=" btn btn-outline rounded-0 my-2 my-sm-0" style="color:red; border-color:red; background-color:white" type="submit" action="logout.php">
+                        Logout
+                        </button>
             </form>
         </div>
     </nav>
@@ -48,7 +58,7 @@ require_once 'database.php';
                         <span class="text-success"> 28 Dec 2018</span>
                     </div>
                     <div class="card-body">
-                        <img class="card-img-top" src="img/posts/1.png" alt="img">
+                        <img class="card-img-top" src="image.php?filename=img/posts/1.png" alt="img">
                         <hr>
                         <h2 class="card-title">Kajal Aggarwal Wons The Best Actress Award At Zee Golden Awards 2017 For Nene Raju Nene Mantri Movie.</h2>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est dicta nisi ab consequatur fugit obcaecati harum expedita, doloremque dolorem quam aut quas ad amet assumenda. Provident sunt ipsum minima autem.</p>

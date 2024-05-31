@@ -1,3 +1,10 @@
+<?php
+if (isset($_COOKIE['session'])) {
+  header("Location: index.php");
+  exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -48,8 +55,6 @@
 
 include('database.php');
 
-session_start();
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (!empty($_POST['username']) && !empty($_POST['password'])) {
     // $username = $_POST['username'];
@@ -70,13 +75,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($result) > 0) {
-      header("Location: home.php");
+      $sessionData = [
+        'username' => $username,
+        'user_token' => bin2hex(random_bytes(8))
+      ];
+
+      // Serialize the session data
+      $serializedData = base64_encode(serialize($sessionData));
+
+      // Set the cookie
+      setcookie('session', $serializedData, [
+        'expires' => time() + 3600, // 1 hour
+        'path' => '/', // Available for the entire domain
+        'httponly' => true, // Prevent access from client-side scripts
+        'samesite' => 'Strict' // Prevent cross-site requests
+      ]);
+
+      Header("Location: index.php");
     } else {
       echo "<script>document.getElementById('response-text').innerHTML = 'Username or password incorrect!';</script>";
     }
 
     mysqli_stmt_close($stmt);
-    
   } else {
     echo "<script>document.getElementById('response-text').innerHTML = 'Please fill in all fields!';</script>";
   }

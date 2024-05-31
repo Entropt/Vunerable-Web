@@ -9,7 +9,7 @@
 | File upload | completed | completed |  |
 | Cross-site scripting | completed | completed |
 | Server-side template injection | completed | completed |
-| Path Traversal | completed | on-going |
+| Path Traversal | completed | completed |
 
 
 ## Specification

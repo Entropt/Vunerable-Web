@@ -2,6 +2,14 @@
 <html lang="en">
 
 <?php
+if (!isset($_COOKIE['session'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$unserialized_data = unserialize(base64_decode($_COOKIE['session']));
+$username = $unserialized_data['username'];
+
 require_once 'database.php';
 if (empty($_GET['postid']) || !is_numeric($postId = $_GET['postid'])) {
     Header("Location: index.php");
@@ -34,11 +42,13 @@ $row = mysqli_fetch_assoc($result);
                 <li class='nav-link'>Hi,
                     <a style='font-style: italic; font-size: 95%;'">
                         <?php
-                        echo 'admin';
+                        echo $username;
                         ?>
                     </a>
                 </li>
-                <button class=" btn btn-outline rounded-0 my-2 my-sm-0" style="color:red; border-color:red; background-color:white" type="submit">Logout</button>
+                <button class=" btn btn-outline rounded-0 my-2 my-sm-0" style="color:red; border-color:red; background-color:white" type="submit">
+                        Logout
+                        </button>
             </form>
         </div>
     </nav>
@@ -72,9 +82,8 @@ $row = mysqli_fetch_assoc($result);
                     </div>
                     <div class="card-body">
                         <?php
-                        $file_dir = "img/posts/" . $postId . ".png";
-                        if (file_exists($file_dir))
-                            echo "<img class='card-img-top' src=$file_dir>";
+                        $file_dir = 'image.php?filename=img/posts/' . $postId . '.png';
+                        echo "<img class='card-img-top' src=$file_dir>";
                         ?>
                         <hr>
                         <?php
@@ -97,7 +106,7 @@ $row = mysqli_fetch_assoc($result);
                         <div>
                             <a id="preview-user" style="display:none">
                                 <?php
-                                echo 'admin: ';
+                                echo $username;
                                 ?>
                             </a>
                             <span class="preview-container text-success bg-faded" />

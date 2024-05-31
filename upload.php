@@ -1,6 +1,11 @@
 <?php
 require_once 'database.php';
 
+if (!isset($_COOKIE['session'])) {
+    header("Location: login.php");
+    exit;
+}
+
 if (empty($_GET['postid']) || !is_numeric($postId = $_GET['postid'])) {
     Header("Location: index.php");
 }
