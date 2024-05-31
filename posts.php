@@ -95,13 +95,13 @@ $row = mysqli_fetch_assoc($result);
                             </div>
                         </form>
                         <div>
-                        <a id="preview-user" style="display:none">
-                            <?php
-                            echo 'admin: ';
-                            ?>
-                        </a>
-                        <span class="preview-container text-success bg-faded" />
-                        </div> 
+                            <a id="preview-user" style="display:none">
+                                <?php
+                                echo 'admin: ';
+                                ?>
+                            </a>
+                            <span class="preview-container text-success bg-faded" />
+                        </div>
                         <hr>
                         <?php
 
