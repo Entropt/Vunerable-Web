@@ -1,8 +1,12 @@
 <?php
-if (isset($_COOKIE['session'])) {
+session_start();
+
+if (isset($_SESSION['username'])) {
   header("Location: index.php");
   exit;
 }
+
+require_once 'database.php';
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +36,6 @@ if (isset($_COOKIE['session'])) {
         <div class='field-group'>
           <label class='label' for='password'>Password</label>
           <input class='input' type='password' id='password' name='password' placeholder='Enter password' />
-          <a href='#forgot' class='link-forgot'>Forgot?</a>
         </div>
         <div class='field-group'>
           <input class='btn-submit' type='submit' value='Log In' />
@@ -52,9 +55,6 @@ if (isset($_COOKIE['session'])) {
 </html>
 
 <?php
-
-include('database.php');
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (!empty($_POST['username']) && !empty($_POST['password'])) {
     // $username = $_POST['username'];
@@ -75,21 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $result = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($result) > 0) {
-      $sessionData = [
-        'username' => $username,
-        'user_token' => bin2hex(random_bytes(8))
-      ];
-
-      // Serialize the session data
-      $serializedData = base64_encode(serialize($sessionData));
-
-      // Set the cookie
-      setcookie('session', $serializedData, [
-        'expires' => time() + 3600, // 1 hour
-        'path' => '/', // Available for the entire domain
-        'httponly' => true, // Prevent access from client-side scripts
-        'samesite' => 'Strict' // Prevent cross-site requests
-      ]);
+      $_SESSION['username'] = $username;
 
       Header("Location: index.php");
     } else {

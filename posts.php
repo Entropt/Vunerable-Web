@@ -1,14 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
-if (!isset($_COOKIE['session'])) {
+session_start();
+
+
+if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit;
 }
 
-$unserialized_data = unserialize(base64_decode($_COOKIE['session']));
-$username = $unserialized_data['username'];
+$username = $_SESSION['username'];
 
 require_once 'database.php';
 if (empty($_GET['postid']) || !is_numeric($postId = $_GET['postid'])) {
@@ -18,6 +17,9 @@ $query = "SELECT * FROM posts WHERE post_id = $postId";
 $result = mysqli_query($connect, $query);
 $row = mysqli_fetch_assoc($result);
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <!-- Required meta tags -->
@@ -106,7 +108,7 @@ $row = mysqli_fetch_assoc($result);
                         <div>
                             <a id="preview-user" style="display:none">
                                 <?php
-                                echo $username;
+                                echo $username . ':';
                                 ?>
                             </a>
                             <span class="preview-container text-success bg-faded" />

@@ -1,11 +1,14 @@
 <?php
-if (!isset($_COOKIE['session'])) {
+session_start();
+
+if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit;
 }
 
-$unserialized_data = unserialize(base64_decode($_COOKIE['session']));
-$username = $unserialized_data['username'];
+$username = $_SESSION['username'];
+
+// echo 'Session save path: ' . session_save_path();
 
 require_once 'database.php';
 ?>

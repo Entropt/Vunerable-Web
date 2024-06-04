@@ -1,10 +1,14 @@
 <?php
 require_once 'database.php';
 
-if (!isset($_COOKIE['session'])) {
+session_start();
+
+if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit;
 }
+
+$username = $_SESSION['username'];
 
 if (empty($_GET['postid']) || !is_numeric($postId = $_GET['postid'])) {
     Header("Location: index.php");
@@ -75,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
         echo "The comment has been uploaded.<br>";
-        insert_comment($connect, $postId, $_POST['comment'], 'admin');
+        insert_comment($connect, $postId, $_POST['comment'], $username);
     }
 
     // If the file is not moved or renamed, it will be deleted here

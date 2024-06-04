@@ -1,8 +1,12 @@
 <?php
-if (isset($_COOKIE['session'])) {
+session_start();
+
+if (isset($_SESSION['username'])) {
   header("Location: index.php");
   exit;
 }
+
+require_once 'database.php';
 ?>
 
 <!DOCTYPE html>
@@ -50,8 +54,6 @@ if (isset($_COOKIE['session'])) {
 
 </html>
 <?php
-
-include('database.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (!empty($_POST['email']) && !empty($_POST['username']) && !empty($_POST['password'])) {

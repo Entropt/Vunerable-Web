@@ -1,5 +1,7 @@
 <?php
-if (!isset($_COOKIE['session'])) {
+session_start();
+
+if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit;
 }
@@ -7,7 +9,7 @@ if (!isset($_COOKIE['session'])) {
 // Construct the full path to the file
 if (!empty($requestedFile = $_GET['filename'])) {
     $allowedDirectories = [
-        '/var/www/vunerable-web/img'
+        '/var/www/vunerable-web'
     ];
 
     // Get the real path of the requested file
@@ -20,6 +22,7 @@ if (!empty($requestedFile = $_GET['filename'])) {
             break; // Exit the loop if a valid file path is found
         }
     }
+
 
     if (file_exists($filePath)) {
         $fileExtension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
