@@ -6,7 +6,7 @@
 | --- | :---:| :---: |
 | SQL Injection | completed | completed | 
 | Insecure Deserialization | completed | completed |
-| File upload | completed | completed |  |
+| File upload | completed | completed |
 | Cross-site scripting | completed | completed |
 | Server-side template injection | completed | completed |
 | Path Traversal | completed | completed |

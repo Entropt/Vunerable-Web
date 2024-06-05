@@ -41,9 +41,6 @@ require_once 'database.php';
           <input class='btn-submit' type='submit' value='Log In' />
         </div>
         <div id='response-text' />
-        <script>
-          // input the code here
-        </script>
       </form>
     </div>
     <div class='bg-grey'>

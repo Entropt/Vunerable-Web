@@ -8,8 +8,6 @@ if (!isset($_SESSION['username'])) {
 
 $username = $_SESSION['username'];
 
-// echo 'Session save path: ' . session_save_path();
-
 require_once 'database.php';
 ?>
 <!DOCTYPE html>
@@ -77,10 +75,10 @@ require_once 'database.php';
                         <span class="text-success"> 28 Dec 2018</span>
                     </div>
                     <div class="card-body">
-                        <img class="card-img-top" src="https://via.placeholder.com/750x300" alt="img">
+                        <img class="card-img-top" src="image.php?filename=img/posts/2.png" alt="img">
                         <hr>
-                        <h2 class="card-title">Kajal Aggarwal Wons The Best Actress Award At Zee Golden Awards 2017 For Nene Raju Nene Mantri Movie.</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est consequatur aliquam, non eius aut natus at consequuntur quasi sed corporis possimus adipisci dignissimos atque praesentium sint autem pariatur asperiores laudantium.</p>
+                        <h2 class="card-title">Digital Image Size and Resolution: What Do You Need to Know?</h2>
+                        <p class="card-text">Have you noticed that people get confused when talking about the size and resolution of an image? Pixel dimensions are really the only thing you need to be concerned about. The pixel dimensions of an image tell you how much information is contained within the file.</p>
                         <a href="blog-post.html" class="btn btn-primary">Read more</a>
                     </div>
                 </div>
@@ -93,10 +91,10 @@ require_once 'database.php';
                         <span class="text-success"> 28 Dec 2018</span>
                     </div>
                     <div class="card-body">
-                        <img class="card-img-top" src="https://via.placeholder.com/750x300" alt="img">
+                        <img class="card-img-top" src="image.php?filename=img/posts/3.png" alt="img">
                         <hr>
-                        <h2 class="card-title">Kajal Aggarwal Wons The Best Actress Award At Zee Golden Awards 2017 For Nene Raju Nene Mantri Movie.</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est consequatur aliquam, non eius aut natus at consequuntur quasi sed corporis possimus adipisci dignissimos atque praesentium sint autem pariatur asperiores laudantium.</p>
+                        <h2 class="card-title">How To Reverse Image Search On A Mobile Device Or Computer</h2>
+                        <p class="card-text">A reverse image search is the use of a photo to search online without text. If the exact image doesn’t appear, very similar ones pop up. There are three main ways to use this feature, The first is to check if there’s any plagiarized information in the text sent. The second method is finding information about a photo.</p>
                         <a href="blog-post.html" class="btn btn-primary">Read more</a>
                     </div>
                 </div>
@@ -109,10 +107,10 @@ require_once 'database.php';
                         <span class="text-success"> 28 Dec 2018</span>
                     </div>
                     <div class="card-body">
-                        <img class="card-img-top" src="img/kajal2.png" alt="img">
+                        <img class="card-img-top" src="image.php?filename=img/posts/4.png" alt="img">
                         <hr>
-                        <h2 class="card-title">Kajal Aggarwal Wons The Best Actress Award At Zee Golden Awards 2017 For Nene Raju Nene Mantri Movie.</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est consequatur aliquam, non eius aut natus at consequuntur quasi sed corporis possimus adipisci dignissimos atque praesentium sint autem pariatur asperiores laudantium.</p>
+                        <h2 class="card-title">Expand images for better clarity with our AI Image Expander.</h2>
+                        <p class="card-text">Extend images in any direction with AI using Magic Expand on Canva Pro. Quickly recover whatever's just outside the frame or expand it to fit your design or website layout. With our AI image extender, we make achieving crisp and detailed visuals a breeze.</p>
                         <a href="blog-post.html" class="btn btn-primary">Read more</a>
                     </div>
                 </div>
@@ -125,10 +123,10 @@ require_once 'database.php';
                         <span class="text-success"> 28 Dec 2018</span>
                     </div>
                     <div class="card-body">
-                        <img class="card-img-top" src="https://via.placeholder.com/750x300" alt="img">
+                        <img class="card-img-top" src="image.php?filename=img/posts/5.png" alt="img">
                         <hr>
-                        <h2 class="card-title">Kajal Aggarwal Wons The Best Actress Award At Zee Golden Awards 2017 For Nene Raju Nene Mantri Movie.</h2>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est consequatur aliquam, non eius aut natus at consequuntur quasi sed corporis possimus adipisci dignissimos atque praesentium sint autem pariatur asperiores laudantium.</p>
+                        <h2 class="card-title">Why Do Image Files Need Different Formats? A Primer on Popular Image File Formats</h2>
+                        <p class="card-text">Most of your digital photos are stored in the JPEG format (a.k.a. JPG), but when you download an image from the web these days, it may be using the more modern WebP format. It's likely you're also familiar with GIF animations which are decades old but have come back to popularity with stickers and memes. And even when you simply want to save a screenshot in Paint, you get many file type options.</p>
                         <a href="blog-post.html" class="btn btn-primary">Read more</a>
                     </div>
                 </div>
@@ -138,13 +136,11 @@ require_once 'database.php';
                             <li class="page-item disabled">
                                 <span class="page-link">Previous</span>
                             </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active">
-                                <span class="page-link">
-                                    2
+                            <li class="page-item active"><span class="page-link">
+                                    1
                                     <span class="sr-only">(current)</span>
-                                </span>
-                            </li>
+                                </span></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
                             <li class="page-item"><a class="page-link" href="#">3</a></li>
                             <li class="page-item">
                                 <a class="page-link" href="#">Next</a>

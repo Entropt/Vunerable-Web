@@ -1,44 +1,51 @@
 <?php
+include 'random_class.php';
 
-class AnyClass {
-	private $data;
-	private $desc;
+$requestedFile = 'phar://test.jpeg';
 
-	public function __construct($data, $desc) {
-		$this->data = $data;
-		$this->desc = $desc;
-	}
-	
-    public function __wakeup() {
-        echo "Deserialized\n";
+$allowedDirectories = [
+    '/var/www/vunerable-web'
+];
+
+// // Get the real path of the requested file
+// $requestedFile = realpath($requestedFile);
+
+// foreach ($allowedDirectories as $directory) {
+//     // Check if the requested file is within the allowed directory
+//     if (strpos($requestedFile, $directory) === 0) {
+//         $filePath = $requestedFile;
+//         break; // Exit the loop if a valid file path is found
+//     }
+// }
+
+$filePath = $requestedFile;
+
+if (file_exists($filePath)) {
+    $fileExtension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));
+
+    // Set the appropriate content type header based on the file extension
+    switch ($fileExtension) {
+        case 'jpg':
+        case 'jpeg':
+            $contentType = 'image/jpeg';
+            break;
+        case 'png':
+            $contentType = 'image/png';
+            break;
+        case 'gif':
+            $contentType = 'image/gif';
+            break;
+            // Add more cases for other file types as needed
+        default:
+            $contentType = 'application/octet-stream';
+            break;
     }
 
-	function __destruct() {
-		return new SupportClass($this->data, $this->desc);
-	}
-}
+    // Read the file contents
+    $fileContents = file_get_contents($filePath);
 
-class SupportClass {
-	private $callable;
-	public $newData;
-
-	public function __construct($callable, $data) {
-		$this->callable = $callable;
-		$this->newData = $data;
-	}
-
-	public function __destruct() {
-		@call_user_func($this->callable, $this->newData);
-	}
-
-}
-
-$file = "phar://test.jpeg";
-
-echo realpath($file) . "\n";
-
-if (file_exists($file)) {
-    echo "File exists\n";
+    // Output the file contents
+    echo $fileContents;
 } else {
-    echo "File not found";
+    echo 'File not found.';
 }
