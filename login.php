@@ -54,22 +54,22 @@ require_once 'database.php';
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (!empty($_POST['username']) && !empty($_POST['password'])) {
-    // $username = $_POST['username'];
-    // $password = $_POST['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    // avoid escape string by using \
-    $username = mysqli_real_escape_string($connect, $_POST['username']);
-    $password = mysqli_real_escape_string($connect, $_POST['password']);
+    // // avoid escape string by using \
+    // $username = mysqli_real_escape_string($connect, $_POST['username']);
+    // $password = mysqli_real_escape_string($connect, $_POST['password']);
 
-    // $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
-    // $result = mysqli_query($connect, $query);
+    $query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+    $result = mysqli_query($connect, $query);
 
-    // Not all the sql queries use string condition, the bellow code is for the number condition
-    $query = "SELECT * FROM users WHERE username = ? AND password = ?";
-    $stmt = mysqli_prepare($connect, $query);
-    mysqli_stmt_bind_param($stmt, "ss", $username, $password);
-    mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
+    // // The bellow code is for the number condition
+    // $query = "SELECT * FROM users WHERE username = ? AND password = ?";
+    // $stmt = mysqli_prepare($connect, $query);
+    // mysqli_stmt_bind_param($stmt, "ss", $username, $password);
+    // mysqli_stmt_execute($stmt);
+    // $result = mysqli_stmt_get_result($stmt);
 
     if (mysqli_num_rows($result) > 0) {
       $_SESSION['username'] = $username;
