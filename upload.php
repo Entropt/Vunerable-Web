@@ -70,16 +70,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "Sorry, your file was not uploaded.";
             } else {
                 if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-                    echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+                    insert_comment($connect, $postId, $_POST['comment'], $username);
+                    echo "The file and comment " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " have been uploaded.";
                 } else {
                     echo "Sorry, there was an error uploading your file.";
                 }
-
-                echo "<br>";
             }
+            echo "<br>";
+        } else {
+            echo "The comment has been uploaded.<br>";
+            insert_comment($connect, $postId, $_POST['comment'], $username);
         }
-        echo "The comment has been uploaded.<br>";
-        insert_comment($connect, $postId, $_POST['comment'], $username);
     }
 
     // If the file is not moved or renamed, it will be deleted here

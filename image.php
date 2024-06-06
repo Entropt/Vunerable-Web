@@ -9,11 +9,12 @@ if (!isset($_SESSION['username'])) {
 // Construct the full path to the file
 if (!empty($requestedFile = $_GET['filename'])) {
     $allowedDirectories = [
-        '/var/www/vunerable-web'
+        '/var/www/vunerable-web/img',
+        'img'
     ];
 
-    // Get the real path of the requested file
-    $requestedFile = realpath($requestedFile);
+    // // Get the real path of the requested file
+    // $requestedFile = realpath($requestedFile);
 
     foreach ($allowedDirectories as $directory) {
         // Check if the requested file is within the allowed directory
