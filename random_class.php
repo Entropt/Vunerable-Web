@@ -15,7 +15,6 @@ class AnyClass
         return new SupportClass($this->data, $this->desc);
     }
 }
-
 class SupportClass
 {
     private $callable;

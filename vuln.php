@@ -1,24 +1,22 @@
 <?php
 include 'random_class.php';
 
-$requestedFile = 'phar://test.jpeg';
+$requestedFile = 'phar:///var/www/vunerable-web/out.jpg';
 
 $allowedDirectories = [
     '/var/www/vunerable-web'
 ];
 
-// // Get the real path of the requested file
-// $requestedFile = realpath($requestedFile);
+// Get the real path of the requested file
+$requestedFile = realpath($requestedFile);
 
-// foreach ($allowedDirectories as $directory) {
-//     // Check if the requested file is within the allowed directory
-//     if (strpos($requestedFile, $directory) === 0) {
-//         $filePath = $requestedFile;
-//         break; // Exit the loop if a valid file path is found
-//     }
-// }
-
-$filePath = $requestedFile;
+foreach ($allowedDirectories as $directory) {
+    // Check if the requested file is within the allowed directory
+    if (strpos($requestedFile, $directory) === 0) {
+        $filePath = $requestedFile;
+        break; // Exit the loop if a valid file path is found
+    }
+}
 
 if (file_exists($filePath)) {
     $fileExtension = strtolower(pathinfo($filePath, PATHINFO_EXTENSION));

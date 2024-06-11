@@ -46,3 +46,4 @@ while True:
 
     if not char_exists:
         break
+    

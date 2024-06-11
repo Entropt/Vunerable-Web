@@ -13,8 +13,8 @@ if (!empty($requestedFile = $_GET['filename'])) {
         'img'
     ];
 
-    // // Get the real path of the requested file
-    // $requestedFile = realpath($requestedFile);
+    // Get the real path of the requested file
+    $requestedFile = realpath($requestedFile);
 
     foreach ($allowedDirectories as $directory) {
         // Check if the requested file is within the allowed directory
